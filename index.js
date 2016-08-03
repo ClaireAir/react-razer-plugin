@@ -14,4 +14,11 @@ const ReactRazerPlugin = function(bundle) {
   unresolvedClassnames = function(bundle) {
     // Remove all classnames that don't resolve to a style module
   }
+  
+  let modifiedBundle = bundle
+  modifiedBundle = insertShallowRender(modifiedBundle)
+  modifiedBundle = unusedVariables(modifiedBundle)
+  modifiedBundle = unreachableJSX(modifiedBundle)
+  modifiedBundle = unresolvedClassnames(modifiedBundle)
+  return modifiedBundle
 }
